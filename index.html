@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>UNO FLIP: NUSANTARA EDITION</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<section id="menu" class="scr on">
+  <h1>UNO FLIP<small>NUSANTARA EDITION</small></h1>
+  <div class="prof"><button id="av" title="Ganti avatar">🦅</button><input id="nm" maxlength="12" placeholder="Nama panggilan"><span id="net" class="dot off"></span><small id="netT">Offline</small></div>
+  <button class="big" data-go="setup">🤖 Main Offline</button>
+  <button class="big" id="onl">🌐 Multiplayer Online</button>
+  <button class="big" data-go="howto">📖 Cara Bermain</button>
+  <button class="big" data-go="settings">⚙️ Pengaturan</button>
+  <p id="stat"></p>
+</section>
+
+<section id="setup" class="scr">
+  <h2>Main Offline</h2>
+  <label>Jumlah robot <select id="bots"><option>1</option><option selected>2</option><option>3</option></select></label>
+  <label>Kesulitan <select id="lv"><option value="easy">Mudah</option><option value="normal" selected>Normal</option><option value="hard">Sulit</option></select></label>
+  <button class="big" id="start">▶ Mulai!</button>
+  <button class="back" data-go="menu">← Kembali</button>
+</section>
+
+<section id="howto" class="scr">
+  <h2>Cara Bermain</h2>
+  <div class="txt">
+    <p><b>Tujuan:</b> habiskan semua kartumu lebih dulu.</p>
+    <p><b>Main kartu:</b> warna sama, angka/simbol sama, atau kartu Wild (selalu boleh). Kartu yang bisa dimainkan terangkat.</p>
+    <p><b>Tidak punya kartu cocok?</b> Tekan Ambil Kartu (1 kartu). Jika kartu itu cocok, boleh dimainkan atau tekan Lewati.</p>
+    <p><b>SISI TERANG:</b> Skip (lawan berikutnya dilewati), Reverse (arah berbalik; 2 pemain = skip), +1 (lawan ambil 1 lalu dilewati), Wild (pilih warna), Wild +2 (lawan ambil 2 + pilih warna).</p>
+    <p><b>SISI GELAP:</b> Skip All (semua lawan dilewati), Reverse, +5 (lawan ambil 5), Wild, Wild Warna (lawan ambil kartu sampai dapat warna pilihanmu).</p>
+    <p><b>FLIP:</b> semua kartu (tangan, deck, buangan) berpindah ke sisi lain. Jika sisi baru kartu Flip adalah Wild, warna aktif otomatis warna terbanyak di tanganmu.</p>
+    <p><b>UNO!:</b> saat tersisa 2 kartu, tekan tombol UNO! sebelum memainkan kartu terakhir kedua. Jika lupa, kamu kena penalti +2 kartu.</p>
+    <p><b>Deck habis:</b> kartu buangan (kecuali teratas) dikocok ulang.</p>
+  </div>
+  <button class="back" data-go="menu">← Kembali</button>
+</section>
+
+<section id="settings" class="scr">
+  <h2>Pengaturan</h2>
+  <label><input type="checkbox" id="mute"> Matikan suara</label>
+  <label><input type="checkbox" id="anim" checked> Animasi (matikan jika HP lambat)</label>
+  <button class="back" data-go="menu">← Kembali</button>
+</section>
+
+<section id="game" class="scr">
+  <header><button id="quit">☰ Keluar</button><span id="side"></span><span id="col"></span></header>
+  <div id="opps"></div>
+  <div id="center"><div id="deck" class="card back" title="Ambil kartu"></div><div id="disc"></div></div>
+  <p id="msg"></p>
+  <div id="ctrl"><button id="drawB">Ambil Kartu</button><button id="pass">Lewati</button><button id="uno">UNO!</button></div>
+  <div id="hand"></div>
+</section>
+
+<section id="online" class="scr">
+  <h2>Multiplayer Online</h2>
+  <label>Server <input id="srv"></label>
+  <button class="big" id="mk">➕ Buat Room</button>
+  <label><input id="jc" maxlength="5" placeholder="KODE" style="width:90px;text-transform:uppercase"><button id="jn">Gabung</button></label>
+  <p id="onMsg"></p>
+  <small>Chat dan suara tidak direkam. Nama panggilanmu terlihat pemain lain.</small>
+  <button class="back" data-go="menu">← Kembali</button>
+</section>
+
+<section id="lobby" class="scr">
+  <h2>Lobi Room <span id="rc"></span></h2>
+  <div><button id="cp">📋 Salin Kode</button> <button id="sh">📤 Bagikan</button></div>
+  <div id="plist"></div>
+  <button class="big" id="go">▶ Mulai Pertandingan</button>
+  <p id="lw"></p>
+  <button class="back" id="lv2">← Keluar Room</button>
+</section>
+
+<div id="onbar" hidden><button id="chatB">💬<i id="unr"></i></button><button id="micB">🎤</button><button id="spkB">🔊</button><small id="vstat"></small><small id="speaking"></small></div>
+<div id="chat" hidden><div id="clog"></div><div id="qc"></div><div id="cin"><input id="ct" maxlength="120" placeholder="Ketik pesan"><button id="cs">Kirim</button></div></div>
+
+<div id="modal" hidden><div id="box"></div></div>
+<script src="engine.js"></script>
+<script src="config.js"></script>
+<script src="game.js"></script>
+<script src="net.js"></script>
+</body>
+</html>
